@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ANDigital Associate Coding Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body class="city-newcastle">
+
+<header id="header">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">ANDigital</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select City <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="london.html">London</a></li>
+                            <li><a href="manchester.html">Manchester</a></li>
+                            <li><a href="newcastle.html">Newcaslte</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+</header>
+<div class="col-xs-12 banner">
+    <p>Newcastle</p>
+</div>
+<div class="container">
+   <div class="col-xs-12">
+       <div class="search-header">
+           <form>
+               Search for venues in Newcastle:
+               <input type="search" id="mySearch">
+               <input type="submit" class="btn" id="submit">
+           </form>
+       </div>
+       <h1>Search Results</h1>
+       <ol id="search-results">
+
+       </ol>
+   </div>
+</div>
+<footer class="footer-basic-centered">
+    <div class="container">
+        <p class="footer-company-motto">The company motto.</p>
+
+        <p class="footer-links">
+            <a href="#">Home</a>
+            ·
+            <a href="#">Blog</a>
+            ·
+            <a href="#">Pricing</a>
+            ·
+            <a href="#">About</a>
+            ·
+            <a href="#">Faq</a>
+            ·
+            <a href="#">Contact</a>
+        </p>
+
+        <p class="footer-company-name">Company Name &copy; 2015</p>
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="js/app.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        console.log('doc ready');
+
+        $("#submit").click(function(){
+            event.preventDefault();
+            $("#search-results").empty();
+            var x = document.getElementById("mySearch").value;
+            var search_term = {
+                query: x
+            };
+
+            search(search_term);
+
+        });
+
+    });
+
+    function search(search_term) {
+        console.log("search for");
+        console.dir(search_term);
+
+        $.ajax ({
+            url: "https://api.foursquare.com/v2/venues/search?near=Newcastle_upon_Tyne,Newcastle_upon_Tyne&client_id=DWMW4SPZ335TVHGTQKG0BAPGRGEPLBERKUXGUTXGZPGWGTMF&client_secret=MQ41CFKZCUY4FH1DXXMNLBPI4Z42Z1QE0QYEYBE1IQUJDXWW&v=20130815&ll=40.7,-74&" + $.param(search_term),
+            datatype: "jsonp",
+            success: function(data) {
+                console.dir(data);
+
+
+                for (item in data["response"]["venues"]) {
+                    console.log(data["response"]["venues"]);
+                    var linkGenerate = data["response"]["venues"][item]["url"];
+
+                    $("#search-results").append(
+                            "<li>" + data["response"]["venues"][item]["name"] + "<a class='link' target='_blank' href=\'" + linkGenerate + "\'>" + data["response"]["venues"][item]["url"] + "</a>" + "</li>");
+                }
+                $("a[href$='undefined']").remove();
+
+            }
+
+        });
+        console.log($.param(search_term))
+
+
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'nexa_lightregular', "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    color: #444;
+}
+
+#header {
+    background: #292929;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    /* margin-bottom: 30px; */
+    min-height: 52px;
+}
+
+.home .col-sm-4 {
+    padding: 50px;
+    border: 1px solid #D93621;
+    margin-left: -1px;
+}
+
+.home .col-sm-4:hover {
+    padding: 50px;
+    border: 1px solid #D93621;
+    margin-left: -1px;
+    background :#D93621;
+    color: white;
+}
+
+.container {
+    width:900px;
+    margin: auto;
+}
+
+.box {
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+h1, h2, h3, p {
+    font-weight: 300;
+    margin: 0px 0 10px;
+    color: #666;
+    color: #d93621;
+}
+
+h1 {
+    margin-top:25px;
+
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    color: #333;
+    margin: 0 0 10px;
+    line-height: 24px;
+}
+
+a, a:hover {
+    color: #d93621;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+li {
+    line-height: 24px;
+}
+
+/* LONDON */
+
+.city-london .banner {
+    background: url("../img/london-1.jpg") no-repeat center;
+    background-size: cover;
+    min-height: 500px;
+}
+
+.city-manchester .banner {
+    background: url("../img/manchester.jpg") no-repeat center;
+    background-size: cover;
+    min-height: 500px;
+}
+
+
+.city-newcastle .banner {
+    background: url("../img/newcastle.jpg") no-repeat center;
+    background-size: cover;
+    min-height: 500px;
+}
+
+
+.search-header {
+    padding: 60px 0 30px 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+nav.navbar.navbar-inverse {
+    background: #292929;
+}
+
+ol#search-results {background: #F7F7F7;padding: 20px 40px;}
+
+footer.footer-basic-centered .container {/* border-top: 1px solid #ccc; *//* margin: 70px auto 0 auto; */padding: 30px;}
+
+footer.footer-basic-centered {
+    background: aliceblue;
+    /* padding-top: 30px; */
+    margin: 70px auto 0 auto;
+}
+
+input#mySearch {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    padding: 6px;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.col-xs-12.banner p {
+    position: absolute;
+    top: 50% !important;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    color: white;
+    font-size: 6vw;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0px 0px 9px black;
+}
